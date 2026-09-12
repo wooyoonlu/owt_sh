@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", system-ui;
+  text-decoration: none;
+  color: black;
+  
+}
+
+div{
+  margin: auto;
+  padding: auto;
+}
+
+body{
+  margin: 0;
+  padding: 20px 0;
+  text-decoration: none;
+}
+
+header {
+  margin: auto;
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0;
+  text-decoration: none;
+}
+
+.header h1{
+  padding: 20px;
+  text-decoration: none;
+}
+
+nav{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color:aliceblue;
+  text-decoration: none;
+  position: relative;
+  font-size: 110%;
+  gap: 20px;
+  margin: auto;
+}
+
+main{
+  margin: auto;
+  padding: auto;
+}
+
+.imagee{
+  display: flex;
+  padding: 10px;
+  /*align-items: center;*/
+}
+
+.imagee img{
+  display: block;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+a {
+  text-decoration: none;
+  color:black;
+  padding: auto;
+}
+a:hover {
+ color:aqua;
+}
+
+.about h2 {
+  text-decoration: none;
+  color:black;
+  padding: 20px 20px;
+  /*margin: 20px;*/
+}
+
+.about p{
+  text-decoration: none;
+  display: block;
+  color:black;
+  font-size: 120%;
+  padding: 20px;
+  /*margin: 20px;*/
+}
+
+.plus h2 {
+  text-decoration: none;
+  color:black;
+  padding: 20px 20px;
+  /*margin: 20px;*/
+}
+
+.plus p{
+  text-decoration: none;
+  display: block;
+  color:black;
+  padding: 20px;
+  /*margin: 20px;*/
+}
+
+.plus ul{
+  color:black;
+  padding: 30px;
+  font-size: 120%;
+  list-style-type: square;
+}
+
+.top h2 {
+  text-decoration: none;
+  color:black;
+  padding: 20px 20px;
+  /*margin: 20px;*/
+}
+
+p {
+  background: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  color:black;
+  padding: auto;
+}
+
+top{
+  padding: 20px;
+}
+
+.top table{
+  padding: 20px;
+  display: block;
+  border-collapse: collapse;
+}
+
+.top th, td, thead, tbody{
+  font-size: 110%;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #000;
+}
+
+.footer{
+    margin-top: 60px;
+    border-top: 1px solid var(--line);
+    padding: 20px;
+    background: #414142;
+    text-align: center;
+    color: white;
+}
+
+.footer p{
+    background: #414142;
+}
