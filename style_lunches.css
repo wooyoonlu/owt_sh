@@ -89,9 +89,10 @@ section div div button{
 }
 
 @media (max-width: 800px) {
-  .dish_grid {
+  section div {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
   
 
