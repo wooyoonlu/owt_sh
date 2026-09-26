@@ -7,7 +7,8 @@
 section div{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    
+    gap: 10px;
+  margin-top: 20px;
 
 }
 
@@ -26,44 +27,106 @@ section div div{
 }
 
 section div div:hover, section div div button:hover{
-    border: 1px solid var(--main-color);
-    
-    
+    border: 2px solid var(--main-color);    
 }
 
+section h2{
+    padding: 0%;
+    margin: 2%;
+}
 
 section div div img{
-    margin-left: auto; 
+    /*margin-left: auto; 
     margin-right: auto;
-    display: flex;
+    margin-bottom: 12px;*/
+    display: block;
+    
     border-radius: 10px;
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    object-fit: cover;
+    max-height: 300px;
+
+    margin:0 auto 15px;
 }
 
 /*цена*/
-section div div p{
+section div div .price{
     padding: 5px;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
 }
 
 /*название*/
-section div div p{
+section div div .name{
     padding: 5px;
+    font-size: 1.15rem;
+  margin-bottom: 5px;
+  flex-grow: 1;
 
 }
 
 /*вес/объем*/
-section div div p{
+section div div .volume{
     padding: 5px;
+    margin-bottom: 15px;
 
 }
 
 section div div button{
-border-radius: 10px;
- padding: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-nav{
-
+@media (min-width: 1200px){
+    section div {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
+@media (max-width: 800px) {
+  .dish_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  
+
+  .nav {
+    justify-content: space-between;
+  }
+
+  main > h1,
+  section > h1 {
+    text-align: center;
+  }
+
+  section h2 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav a {
+    font-size: calc(1rem + 4px);
+  }
+
+  section h2 {
+    text-align: center;
+  }
+
+  
+
+  .dish-grid {
+    grid-template-columns: 1fr;
+  }
+}
