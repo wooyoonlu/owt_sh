@@ -1,10 +1,15 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
   font-family: "Press Start 2P", system-ui;
   text-decoration: none;
   color: black;
+}
+
+:root{
+  --main-color:tomato;
+
 }
 
 div{
@@ -13,7 +18,7 @@ div{
 }
 
 body{
-  margin: 0;
+  margin: 0px;
   padding: 20px 0;
   text-decoration: none;
 }
@@ -43,9 +48,13 @@ nav{
   margin: auto;
 }
 
+nav a{
+
+}
+
 main{
-  margin: auto;
-  padding: auto;
+  margin: 0px;
+  padding: 0px;
 }
 
 .imagee{
@@ -66,7 +75,7 @@ a {
   padding: auto;
 }
 a:hover {
- color:aqua;
+ color:var(--main-color);
 }
 
 .about h2 {
@@ -139,12 +148,13 @@ top{
 }
 
 .footer{
-    margin-top: 60px;
+  position: sticky;
+    margin: 60px 0px 0px 0px;
     border-top: 1px solid var(--line);
     padding: 20px;
     background: #414142;
     text-align: center;
-    color: white;
+    color: #414142;
 }
 
 .footer p{
