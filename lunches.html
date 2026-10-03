@@ -124,6 +124,78 @@
                 </div>
                 </div>
             </section>
+
+            <section class = "forma">
+                <form class = "order-form" action="https://httpbin.org/post" method = "POST">
+                    <h2>Сделать заказ</h2>
+                    <div class="form-column">
+                        <div class="column_one">
+                            <h3>
+                                Ваш заказ
+                            </h3>
+                            <label for="soup">Суп</label>
+                            <select name="soup" id="soup" required>
+                                <option value="" disabled selected>Выберите суп</option>
+                                <option value="cheese_creme_soup">Сырный крем-суп</option>
+                                <option value="borsch_soup">Борщ</option>
+                                <option value="buyabes_soup">Буйабес</option>
+                                <option value="tom_yam_soup">Том-ям</option>
+                            </select>
+                            <label for="maindish">Выберите главное блюдо</label>
+                            <select name="maindish" id="maindish" required>
+                                <option value="" disabled selected>Выберите суп</option>
+                                <option value="pasta_coutlets">Макароны с котлетами</option>
+                                <option value="paelia">Паэлья</option>
+                                <option value="suchi_forel">Суши с форелью</option>
+                                <option value="carbonara">Карбонара</option>
+                            </select>
+                            <label for="maindish">Выберите напиток</label>
+                            <select name="maindish" id="maindish" required>
+                                <option value="" disabled selected>Выберите суп</option>
+                                <option value="black_tea">Черный чай</option>
+                                <option value="matcha">Матча</option>
+                                <option value="coffee_americano">Кофе Американо</option>
+                                <option value="water">Вода</option>
+                            </select>
+                            <label for="comment">Комментарий к заказу</label>
+                            <textarea name="comment" id="comment"
+                            rows="4" placeholder="Например: положите 3 котлеты вместо двух"></textarea>
+                        </div>
+                        <div class="client_col">
+                            <h3>Ваши данные</h3>
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович"/>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="iiivan@mail.ru"/>
+                            <div class="checkbox">
+                                <input type="checkbox" id="subcribe" name="subscribe" checked/>
+                                <label for="subscribe">Подписаться на рассылку</label>
+                            </div>
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name = "phone" required placeholder="+8 (800) 555-35-35"/>
+                            <label for="address">Адрес доставки</label>
+                            <input type="text" name="address" id="address" required placeholder="ул. Улица, д. 1, кв. 10"/>
+                            <fieldset class="delivery_time">
+                                <legend>Время доставки</legend>
+                                <div class = "radio_row">
+                                    <input type="radio" id="deliv_asap" name="deliv_type" value="asap" required/>
+                                    <label for="deliv_asap">Как можно скорее</label>
+                                </div>
+                                <div class="radio_row">
+                                    <input type="radio" id="deliv_time" name="deliv_type" value="time"/>
+                                    <label for="deliv_time">Выбрать время</label>
+                                </div>
+                            </fieldset>
+                            <label for="deliv_time_value">Укажите время доставки</label>
+                            <input type="time" id="deliv_time_value" name="deliv_time_value" min="08:00" max="23:00" step="300" placeholder="08:00"/>
+                            <div class="form_buttons">
+                                <button type="reset" class="btn_reset">Сбросить</button>
+                                <button type="submit" class="btn_submit">Отправить</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
             
         </main>
         <footer class = "footer" id="footer1">
