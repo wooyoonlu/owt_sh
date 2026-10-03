@@ -2,6 +2,7 @@
 *{
     margin: 0px;
     font-family: "Press Start 2P", system-ui;
+    box-sizing: border-box;
 }
 
 section div{
@@ -9,6 +10,7 @@ section div{
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   margin-top: 20px;
+  border: white solid 2px;
 
 }
 
@@ -94,7 +96,18 @@ section div div button{
   }
 }
 
-  .forma{
+
+
+
+
+
+
+
+
+
+
+
+.forma{
     max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -122,6 +135,8 @@ section div div button{
 
 .column_one, .client_col{
     min-width: 0;
+    border: white solid 2px;
+
 }
 
 .form-column h3{
@@ -146,6 +161,7 @@ section div div button{
     align-items: center;
     gap: 8px;
     margin-bottom: 18px;
+    pointer-events: none;
 }
 
 .checkbox label{
@@ -178,6 +194,47 @@ section div div button{
   section h2 {
     text-align: center;
   }
+
+section div div div.order_empty{
+  display: block;
+  flex-direction: none;
+  margin: 20px;
+  padding: 20px;
+  border-color: white;
+  border-radius: none;
+  box-shadow: none;
+}
+
+.order_empty{
+  border: white solid 2px;
+}
+
+ .order_empty ~ label,
+.order_empty ~ input {
+  display: none;
+}
+
+.order_empty.hidden {
+  display: none;
+}
+
+.order_empty.hidden ~ label,
+.order_empty.hidden ~ input {
+  display: block;
+}
+
+ .total{
+  padding: 5px;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+#total.hidden{
+  display: none;
+}
+
+.hidden{
+  display:none;
 }
 
 @media (max-width: 600px) {
