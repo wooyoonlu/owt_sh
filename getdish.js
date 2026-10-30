@@ -32,6 +32,14 @@ const dishes = [
     image:'https://i.pinimg.com/736x/39/6e/5a/396e5ae4a9574dd367af4f8e4a4e4bc8.jpg'
 },
 {
+    keyword: 'harcho_soup',
+    name: 'Суп Харчо',
+    price:'400р',
+    volume:'300мл',
+    category:'soup',
+    image:'https://i.pinimg.com/1200x/1f/a5/92/1fa592b953755b72a3bcaaf6ecc5178e.jpg'
+},
+{
     keyword: 'pasta_coutlets',
     name: 'Макароны с котлетами',
     price:'300р',
@@ -64,6 +72,14 @@ const dishes = [
     image:'https://i.pinimg.com/736x/d1/77/2c/d1772c1976fb587d0994ff3e7b9556fa.jpg'
 },
 {
+    keyword: 'lasagna',
+    name: 'Лазанья',
+    price:'500р',
+    volume:'350гр',
+    category:'main',
+    image:'https://i.pinimg.com/736x/28/d6/ae/28d6ae502c19e790a2b330cb31145f06.jpg'
+},
+{
     keyword: 'black_tea',
     name: 'Чай черный',
     price:'50р',
@@ -94,5 +110,13 @@ const dishes = [
     volume:'250мл',
     category:'drink',
     image:'https://i.pinimg.com/736x/18/58/81/1858817f41dcb5e5fdb8d7bedd3497ae.jpg'
+},
+{
+    keyword: 'latte',
+    name: 'Кофе Латте',
+    price:'200р',
+    volume:'250мл',
+    category:'drink',
+    image:'https://i.pinimg.com/1200x/aa/bb/39/aabb39ea70e4edd6bd94604d26d8ed32.jpg'
 }
 ];

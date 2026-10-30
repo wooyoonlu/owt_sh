@@ -28,13 +28,19 @@ section div div{
     /*grid-template-rows:max-content;*/
 }
 
-section div div:hover, section div div button:hover{
-    border: 2px solid var(--main-color);    
+section div div:hover{
+    border: 2px solid var(--main-color);  
+}
+
+section div div button:hover{
+    border: 2px solid var(--main-color);  
+    background-color: azure;  
 }
 
 section h2{
-    padding: 0%;
+    padding: 40px 0 10px 0;
     margin: 2%;
+
 }
 
 section div div img{
@@ -78,9 +84,11 @@ section div div .volume{
 
 section div div button{
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     font-weight: 600;
+    border: 2px solid rgba(128, 128, 128, 0.733);
+    
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -97,6 +105,28 @@ section div div button{
 }
 
 
+.soup_class_div {
+  display: flex;
+  justify-content:left;
+  margin: 25px;
+  transition: background-color 2s ease, color 0.2s ease;
+  padding: 5px 0 5px 0;
+}
+
+.soup_class{
+  background-color:aliceblue;
+  border-radius: 25px;
+  padding: 15px;
+  border: 2px solid azure;
+  transition: background-color 2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.soup_class:hover{
+  background-color:azure;
+  border: 2px solid var(--main-color);
+  transition: background-color 2s ease,  color 0.2s ease;
+}
 
 
 
@@ -108,7 +138,7 @@ section div div button{
 
 
 .forma{
-    max-width: 1100px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 40px 20px;
   }
@@ -119,7 +149,7 @@ section div div button{
 }
 
 .order-form{
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     max-width: 1200px;
@@ -131,12 +161,22 @@ section div div button{
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     min-width: 0;
+    box-shadow: none;
 }
 
-.column_one, .client_col{
+.column_one, .client_col, .radio_row, .form_buttons{
     min-width: 0;
     border: white solid 2px;
+    cursor:auto;
+    box-shadow: none;
+}
 
+.column_one:hover, .client_col:hover, .radio_row:hover, .form_buttons:hover{
+    min-width: 0;
+    border: white solid 2px;
+    transform: none;
+    transition: none;
+    box-shadow: none;
 }
 
 .form-column h3{
