@@ -12,6 +12,14 @@
     drink: {
       sectionSelector: '.drinks',
       title: 'Напитки'
+    },
+    salad: {
+      sectionSelector: '.salads',
+      title: 'Салаты/стартеры'
+    },
+    desert: {
+      sectionSelector: '.deserts',
+      title: 'Десерты'
     }
   };
 
@@ -31,6 +39,7 @@
     const card = document.createElement('div');
     card.className = 'dish_card';
     card.setAttribute('data-dish', dish.keyword);
+    card.setAttribute('data-kind', dish.kind);
 
     card.innerHTML = `
       <img src="${dish.image}" alt="${dish.name}">
@@ -79,10 +88,67 @@
     }
   }
 
+
+  function initFilters() {
+  const sections = document.querySelectorAll('section');
+
+  sections.forEach((section) => {
+    const filterButtons = section.querySelectorAll('.soup_class');
+    const dishGrid = section.querySelector('.dish_grid');
+
+    if (!dishGrid || filterButtons.length === 0) return;
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const selectedKind = button.dataset.kind;
+        const isAlreadyActive = button.classList.contains('active');
+
+        filterButtons.forEach((item) => {
+          item.classList.remove('active');
+        });
+
+        if (isAlreadyActive) {
+          showAllDishes(dishGrid);
+          return;
+        }
+
+        button.classList.add('active');
+        filterDishes(dishGrid, selectedKind);
+      });
+    });
+  });
+}
+
+
+function filterDishes(dishGrid, kind) {
+  const cards = dishGrid.querySelectorAll('.dish_card');
+
+  cards.forEach((card) => {
+    if (card.dataset.kind === kind) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
+
+function showAllDishes(dishGrid) {
+  const cards = dishGrid.querySelectorAll('.dish_card');
+
+  cards.forEach((card) => {
+    card.classList.remove('hidden');
+  });
+}
+
+
+
   let currentOrder = {
     soup: null,
     main: null,
-    drink: null
+    drink: null,
+    salad: null,
+    desert: null
   };
 
   function selectDish(dish) {
@@ -90,6 +156,8 @@
     if (dish.category === 'soup') currentOrder.soup = dish;
     if (dish.category === 'main') currentOrder.main = dish;
     if (dish.category === 'drink') currentOrder.drink = dish;
+    if (dish.category === 'salad') currentOrder.salad = dish;
+    if (dish.category === 'desert') currentOrder.desert = dish;
 
     renderOrderForm();
     renderTotalPrice();
@@ -100,9 +168,12 @@
     const soupInput = document.getElementById('soup');
     const mainInput = document.getElementById('maindish');
     const drinkInput = document.getElementById('drink');
+    const saladInput = document.getElementById('salad');
+    const desertInput = document.getElementById('desert');
+
     
     
-    if (!orderEmpty || !soupInput || !mainInput || !drinkInput) return;
+    if (!orderEmpty || !soupInput || !mainInput || !drinkInput || !saladInput || !desertInput) return;
 
     const anySelected = Object.values(currentOrder).some(d => !!d);
 
@@ -113,6 +184,8 @@
         soupInput.value = '';
         mainInput.value = '';
         drinkInput.value = '';
+        saladInput.value = '';
+        desertInput.value = '';
 
         return;
     }
@@ -137,7 +210,20 @@
     else {
         drinkInput.value = '';
     }
+    if (currentOrder.salad) {
+        saladInput.value = currentOrder.salad.name;
+    } 
+    else {
+        saladInput.value = '';
+    }
+    if (currentOrder.desert) {
+        desertInput.value = currentOrder.desert.name;
+    } 
+    else {
+        desertInput.value = '';
+    }
   }
+
 
   function renderTotalPrice() {
     const totalBlock = document.getElementById('total');
@@ -164,15 +250,22 @@
     if (currentOrder.soup) total += parsePrice(currentOrder.soup.price);
     if (currentOrder.main) total += parsePrice(currentOrder.main.price);
     if (currentOrder.drink) total += parsePrice(currentOrder.drink.price);
+    if (currentOrder.salad) total += parsePrice(currentOrder.salad.price);
+    if (currentOrder.desert) total += parsePrice(currentOrder.desert.price);
     
     totalBlock.textContent = `${total} ₽`;
   }
 
   window.selectDish = selectDish;
 
+function initMenu(){
+  renderDishes(dishes);
+  initFilters();
+}
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => renderDishes(dishes));
+    document.addEventListener('DOMContentLoaded', initMenu);
   } else {
-    renderDishes(dishes);
+    initMenu();
   }
 })();

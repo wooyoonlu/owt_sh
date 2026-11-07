@@ -128,9 +128,15 @@ section div div button{
   transition: background-color 2s ease,  color 0.2s ease;
 }
 
+.soup_class.active{
+  background-color: rgb(197, 255, 250);
+  color: black;
+  border-color:  rgb(197, 255, 250);
+}
 
-
-
+.dish_card.hidden{
+  display: none;
+}
 
 
 

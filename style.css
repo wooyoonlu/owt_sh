@@ -53,12 +53,13 @@ nav{
 }
 
 nav a{
-text-decoration: none;
+  text-decoration: none;
   font-weight: 600;
 }
 
 nav a:hover {
   color: --main-color;
+  
 }
 
 .nav a#active {
