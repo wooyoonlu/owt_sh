@@ -45,7 +45,7 @@
       <img src="${dish.image}" alt="${dish.name}">
       <p class="price">${dish.price}</p>
       <p class="name">${dish.name}</p>
-      <p class="volume">${dish.volume}</p>
+      <p class="count">${dish.count}</p>
       <button type="button">Добавить</button>
     `;
 
@@ -132,6 +132,117 @@ function filterDishes(dishGrid, kind) {
   });
 }
 
+const LUNCH_COMBOS = [
+  ['soup', 'main', 'salad', 'drink'],
+  ['soup', 'main', 'drink'],
+  ['soup', 'salad', 'drink'],
+  ['main', 'salad', 'drink'],
+  ['main', 'drink']
+];
+
+function getSelectedCategories() {
+  const selected = [];
+
+  if (currentOrder.soup) selected.push('soup');
+  if (currentOrder.main) selected.push('main');
+  if (currentOrder.drink) selected.push('drink');
+  if (currentOrder.salad) selected.push('salad');
+  if (currentOrder.desert) selected.push('desert');
+
+  return selected;
+}
+
+
+function getNotificationText(selected) {
+  const hasSoup = selected.includes('soup');
+  const hasMain = selected.includes('main');
+  const hasSalad = selected.includes('salad');
+  const hasDrink = selected.includes('drink');
+
+  if (selected.length === 0) {
+    return 'Ничего не выбрано. Выберите блюда для заказа';
+  }
+
+  if (!hasDrink) {
+    return 'Выберите напиток';
+  }
+
+  if (hasSoup && !hasMain && !hasSalad) {
+    return 'Выберите главное блюдо/салат/стартер';
+  }
+
+  if (hasSalad && !hasSoup && !hasMain) {
+    return 'Выберите суп или главное блюдо';
+  }
+
+  if (!hasMain) {
+    return 'Выберите главное блюдо';
+  }
+
+  return null;
+}
+
+
+function isValidLunch(selected) {
+  const orderDishes = selected
+    .filter((category) => category !== 'desert')
+    .sort()
+    .join(',');
+
+  return LUNCH_COMBOS.some((combo) => {
+    return [...combo].sort().join(',') === orderDishes;
+  });
+}
+
+
+function showNotification(text) {
+  const oldNotification = document.querySelector('.notification_overlay');
+  if (oldNotification) {
+    oldNotification.remove();
+  }
+
+  const overlay = document.createElement('div');
+  overlay.className = 'notification_overlay';
+
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+
+  const message = document.createElement('p');
+  message.className = 'notification_text';
+  message.textContent = text;
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'notification_button';
+  button.textContent = 'Окей';
+
+  button.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  notification.appendChild(message);
+  notification.appendChild(button);
+  overlay.appendChild(notification);
+  document.body.appendChild(overlay);
+}
+
+
+function initOrderValidation() {
+  const form = document.querySelector('.order-form');
+
+  if (!form) return;
+
+  form.addEventListener('submit', (event) => {
+    const selected = getSelectedCategories();
+
+    if (!isValidLunch(selected)) {
+      event.preventDefault();
+
+      const message = getNotificationText(selected);
+      showNotification(message || 'Выберите блюда для заказа');
+    }
+  });
+}
 
 function showAllDishes(dishGrid) {
   const cards = dishGrid.querySelectorAll('.dish_card');
@@ -261,6 +372,7 @@ function showAllDishes(dishGrid) {
 function initMenu(){
   renderDishes(dishes);
   initFilters();
+  initOrderValidation();
 }
 
   if (document.readyState === 'loading') {
