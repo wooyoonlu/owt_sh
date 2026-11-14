@@ -18,10 +18,30 @@
       title: 'Салаты/стартеры'
     },
     desert: {
-      sectionSelector: '.deserts',
+      sectionSelector: '.dessert',
       title: 'Десерты'
     }
   };
+
+  const API_KEY = '44c50b88-0370-37dc-a9ef-dc58f02a23ed';
+  async function loadDishes() {
+    try {
+      const url = `https://web-basics-api-gagashaggy.msk1.amvera.tech/labs/api/dishes/default?api_key=44c50b88-0370-37dc-a9ef-dc58f02a23ed`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Ошибка запроса: ${response.status}`);
+      }    
+      const dishes = await response.json();
+      if (!Array.isArray(dishes)) {
+        throw new Error('Сервер вернул не массив блюд');
+      }
+      return dishes;
+    } catch (error) {
+      console.error('Не удалось загрузить блюда:', error);
+  return [];
+    }
+  }
+
 
   function sortDishesByCategory(dishes) {
     const grouped = {};
@@ -147,7 +167,7 @@ function getSelectedCategories() {
   if (currentOrder.main) selected.push('main');
   if (currentOrder.drink) selected.push('drink');
   if (currentOrder.salad) selected.push('salad');
-  if (currentOrder.desert) selected.push('desert');
+  if (currentOrder.desert) selected.push('dessert');
 
   return selected;
 }
@@ -185,7 +205,7 @@ function getNotificationText(selected) {
 
 function isValidLunch(selected) {
   const orderDishes = selected
-    .filter((category) => category !== 'desert')
+    .filter((category) => category !== 'dessert')
     .sort()
     .join(',');
 
@@ -369,7 +389,12 @@ function showAllDishes(dishGrid) {
 
   window.selectDish = selectDish;
 
-function initMenu(){
+async function initMenu(){
+  const dishes = await loadDishes();
+  if (dishes.length === 0) {
+    console.warn('Список блюд пуст');
+    return;
+  }
   renderDishes(dishes);
   initFilters();
   initOrderValidation();

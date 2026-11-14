@@ -368,7 +368,6 @@ section div div div.order_empty{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #b8e0e3;
   z-index: 1000;
 }
 .notification{
